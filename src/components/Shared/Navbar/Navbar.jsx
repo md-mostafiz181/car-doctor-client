@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Container from "../../Container/Container";
 
 const Navbar = () => {
@@ -71,7 +71,7 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{navInfo}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn btn-sm text-orange-700">Appointment</a>
+       <NavLink to="/login"> <a className="btn btn-sm text-orange-700">Login</a></NavLink>
       </div>
     </div>
     </Container>
