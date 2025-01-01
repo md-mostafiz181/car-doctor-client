@@ -1,5 +1,7 @@
 import Container from "../Container/Container";
 import loginImg from "../../assets/images/login/login.svg";
+import { Link } from "react-router-dom";
+
 
 const Login = () => {
     const handleLogin=e=>{
@@ -55,6 +57,8 @@ const Login = () => {
                     Login
                   </button>
                 </div>
+
+                <p>Are you new here? please <Link to='/singUp' className="text-blue-700 font-bold">Sign Up</Link> </p>
               </form>
             </div>
           </div>
