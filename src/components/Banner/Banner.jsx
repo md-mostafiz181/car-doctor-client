@@ -1,9 +1,12 @@
+
 import banner1 from "../../assets/images/banner/1.jpg";
 import banner2 from "../../assets/images/banner/2.jpg";
 import banner3 from "../../assets/images/banner/3.jpg";
 import banner4 from "../../assets/images/banner/4.jpg";
 import banner5 from "../../assets/images/banner/5.jpg";
 import "../Banner/Banner.css";
+
+
 
 const Banner = () => {
   return (
@@ -12,7 +15,10 @@ const Banner = () => {
         <div id="slide1" className="carousel-item relative w-full">
           <img src={banner1} className="w-full h-[600px]" />
           <div className="overlay">
-            <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform ms-28">
+
+               
+                <div className="absolute left-5  top-1/2 flex -translate-y-1/2 transform ">
+
               <div>
                 <h1 className="text-3xl font-bold text-white">
                   Affordable <br /> Price For Car <br /> Servicing
@@ -31,7 +37,10 @@ const Banner = () => {
                   </button>
                 </div>
               </div>
+
             </div>
+
+
           </div>
 
           <div className="absolute left-5 right-5 bottom-0 flex -translate-y-1/2 transform justify-end">
