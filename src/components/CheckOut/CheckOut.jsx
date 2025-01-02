@@ -1,16 +1,41 @@
 import { useLoaderData } from "react-router-dom";
 import Container from "../Container/Container";
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProviders";
+
 
 
 const CheckOut = () => {
+
+    const {user}=useContext(AuthContext)
+    console.log(user)
     const services=useLoaderData()
     const {title,price}=services;
+
+    const handleBookService=event=>{
+        event.preventDefault()
+        const form = event.target;
+        const name=form.name.value;
+        const date =form.date.value;
+        const price=form.price.value;
+        const email=user.email;
+        const order ={
+            customerName:name,
+            date,
+            price,
+            customerEmail:email
+
+        }
+        console.log(order)
+
+        
+    }
     return (
         <div>
             <Container>
                <h1>All services:{title}</h1>
                <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <form className="bg-white p-8 rounded-lg shadow-md w-full max-w-xl">
+      <form onSubmit={handleBookService} className="bg-white p-8 rounded-lg shadow-md w-full max-w-xl">
         <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Check Out</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -20,31 +45,36 @@ const CheckOut = () => {
             </label>
             <input
               type="text"
-              id="firstName"
+              defaultValue={user?.displayName}
+              name="name"
+              id="name"
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter your first name"
             />
           </div>
           <div>
             <label htmlFor="lastName" className="block text-gray-600 mb-2">
-              Last Name
+              Date
             </label>
             <input
-              type="text"
-              id="lastName"
+              type="date"
+              name="date"
+              id="date"
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter your last name"
+              placeholder="Date"
             />
           </div>
           <div>
             <label htmlFor="phone" className="block text-gray-600 mb-2">
-              Phone
+              Price
             </label>
             <input
-              type="tel"
-              id="phone"
+              type="text"
+              name="price"
+              defaultValue={price}
+              id="text"
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter your phone number"
+            //   placeholder="Enter your phone number"
             />
           </div>
           <div>
@@ -53,23 +83,13 @@ const CheckOut = () => {
             </label>
             <input
               type="email"
+              defaultValue={user?.email}
+              name="email"
               id="email"
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter your email"
             />
           </div>
-        </div>
-
-        <div className="mb-6">
-          <label htmlFor="message" className="block text-gray-600 mb-2">
-            Your Message
-          </label>
-          <textarea
-            id="message"
-            rows="4"
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="Type your message here"
-          ></textarea>
         </div>
 
         <button
