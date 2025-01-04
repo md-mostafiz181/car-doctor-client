@@ -24,7 +24,10 @@ const Navbar = () => {
     <Link to="/contact" className="text-white text-lg font-semibold hover:text-blue-400 transition-colors mr-2">Contact</Link>
     {
     user?.email? 
+    <>
+    <Link to="/bookings" className="text-white text-lg font-semibold hover:text-blue-400 transition-colors mr-2">My Bookings</Link>
     <Link to="/" className="bg-red-500 text-white text-lg px-4 py-2 rounded-md hover:bg-red-600 transition-all mr-2"><button onClick={handleLogOut}>Log Out</button></Link>
+    </>
     :
       <Link to="/login" className="bg-blue-500 text-white text-lg px-4 py-2 rounded-md hover:bg-blue-600 transition-all mr-2">Login</Link>
       
