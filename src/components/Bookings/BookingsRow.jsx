@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import Container from "../Container/Container";
+import { Link } from "react-router-dom";
 
 const BookingsRow = ({ booking, handleDelete }) => {
   const { service_title, img, price, _id } = booking;
@@ -38,7 +39,9 @@ const BookingsRow = ({ booking, handleDelete }) => {
       </td>
       <td>{price}</td>
       <th>
+        <Link to={`/update/${_id}`}>
         <button className="btn bg-blue-300 text-orange-600 font-bold btn-xs">Update</button>
+        </Link>
       </th>
     </tr>
   );
