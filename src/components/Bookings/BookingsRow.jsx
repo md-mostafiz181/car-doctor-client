@@ -41,7 +41,9 @@ const BookingsRow = ({ booking, handleDelete }) => {
       <th>
         <Link to={`/update/${_id}`}>
         <button className="btn bg-blue-300 text-orange-600 font-bold btn-xs">Update</button>
+        
         </Link>
+        <button className="btn bg-blue-300 text-orange-600 font-bold btn-xs ms-3">confirm</button>
       </th>
     </tr>
   );
