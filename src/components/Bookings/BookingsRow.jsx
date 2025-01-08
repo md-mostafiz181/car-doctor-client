@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import Container from "../Container/Container";
 import { Link } from "react-router-dom";
 
-const BookingsRow = ({ booking, handleDelete }) => {
-  const { service_title, img, price, _id } = booking;
+const BookingsRow = ({ booking, handleDelete,handleBookingConfirm }) => {
+  const { service_title, img, price, _id,status} = booking;
 
   return (
     <tr>
@@ -43,7 +43,9 @@ const BookingsRow = ({ booking, handleDelete }) => {
         <button className="btn bg-blue-300 text-orange-600 font-bold btn-xs">Update</button>
         
         </Link>
-        <button className="btn bg-blue-300 text-orange-600 font-bold btn-xs ms-3">confirm</button>
+        {
+          status==="confirm"? <span className="text-bold text-green-600">Service Confirmed</span>:
+          <button onClick={()=>handleBookingConfirm(_id)} className="btn bg-blue-300 text-orange-600 font-bold btn-xs ms-3">confirm</button>}
       </th>
     </tr>
   );
