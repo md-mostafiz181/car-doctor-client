@@ -1,14 +1,15 @@
 import Container from "../Container/Container";
 import loginImg from "../../assets/images/login/login.svg";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation} from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProviders";
+import axios from "axios";
 
 
 const Login = () => {
   const {signIn}=useContext(AuthContext)
   const location=useLocation()
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   console.log(location)
 
 
@@ -17,14 +18,19 @@ const Login = () => {
         const form =e.target;
         const email = form.email.value;
         const password=form.password.value;
-        const user = {email,password}
-        console.log(user)
+        // const user = {email,password}
+        // console.log(user)
 
         signIn(email,password)
         .then(result=>{
-          const user=result.user;
-          console.log(user)
-          navigate(location?.state ? location?.state : "/")
+          const loggedInUser=result.user;
+          console.log(loggedInUser)
+          const user = {email}
+          // navigate(location?.state ? location?.state : "/")
+          axios.post("http://localhost:5000/jwt",user)
+          .then(res=>{
+            console.log(res.data)
+          })
         })
         .catch(error=>{
           console.log(error)
